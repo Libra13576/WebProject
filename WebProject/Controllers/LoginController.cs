@@ -16,6 +16,9 @@ namespace WebProject.Controllers
             return View();
         }
 
-        
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
     }
 }
