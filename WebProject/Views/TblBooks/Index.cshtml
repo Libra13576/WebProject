@@ -3,11 +3,19 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .mySlides img {
+        height: 600px; /* Thay đổi chiều cao tối đa nếu cần */
+        width: 500px;
+        margin-left: 90px; /* Căn giữa hình ảnh theo chiều ngang */
+        display: block;
+    }
+</style>
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class=" btn btn-sm btn-success ml-1">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -48,8 +56,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BookDetailes)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookImage1)
+                <td>
+                    <img src="@Url.Content(item.BookImage1)" alt="" class="avatar" height="150" width="150" style="border-radius: 16px; width: 200px;">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cat.CatId)

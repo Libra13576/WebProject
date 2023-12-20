@@ -1,4 +1,6 @@
-﻿namespace WebProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebProject.Models
 {
     public partial class TblBook
     {
@@ -12,6 +14,7 @@
         public string BookTitle { get; set; } = null!;
         public int BookPrice { get; set; }
         public string? BookDetailes { get; set; }
+        [Display(Name ="Image URL")]
         public string? BookImage1 { get; set; }
         public int CatId { get; set; }
         public string OwnerId { get; set; } = null!;
