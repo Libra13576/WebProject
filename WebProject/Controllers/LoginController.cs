@@ -20,5 +20,10 @@ namespace WebProject.Controllers
         {
             return View();
         }
+
+        public IActionResult AdminIndex()
+        {
+            return View();
+        }
     }
 }

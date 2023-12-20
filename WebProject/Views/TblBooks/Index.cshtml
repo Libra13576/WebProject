@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <style>
     .mySlides img {
@@ -74,6 +75,6 @@
                 <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

@@ -56,18 +56,19 @@ namespace WebProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookId,BookTitle,BookPrice,BookDetailes,BookImage1,BookImage2,BookImage3,CatId,OwnerId,PublisherId")] TblBook tblBook)
+        public async Task<IActionResult> Create([Bind("BookId,BookTitle,BookPrice,BookDetailes,BookImage1,CatId,OwnerId,PublisherId")] TblBook tblBook)
         {
 
+            if (ModelState.IsValid)
+            {
                 _context.Add(tblBook);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-
+            }
+            ViewData["CatId"] = new SelectList(_context.TblCategories, "CatId", "CatId", tblBook.CatId);
+            ViewData["OwnerId"] = new SelectList(_context.TblStoreOwners, "OwnerId", "OwnerId", tblBook.OwnerId);
+            ViewData["PublisherId"] = new SelectList(_context.TblPublishers, "PublisherId", "PublisherId", tblBook.PublisherId);
             return View(tblBook);
-            //ViewData["CatId"] = new SelectList(_context.TblCategories, "CatId", "CatId", tblBook.CatId);
-            //ViewData["OwnerId"] = new SelectList(_context.TblStoreOwners, "OwnerId", "OwnerId", tblBook.OwnerId);
-            //ViewData["PublisherId"] = new SelectList(_context.TblPublishers, "PublisherId", "PublisherId", tblBook.PublisherId);
-
         }
 
         // GET: TblBooks/Edit/5
