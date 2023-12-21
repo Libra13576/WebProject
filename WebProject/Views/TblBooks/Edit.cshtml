@@ -3,13 +3,125 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-image: url('../../Layout/img/blog/blog-1.jpg');
+        color: #333;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+    }
 
-<h1>Edit</h1>
+    header {
+        background: #fff;
+        color: white; 
+        font-weight: bold;
+        border-bottom: #ccc solid 1px;
+        margin-bottom: 20px;
+    }
 
-<h4>TblBook</h4>
+        header::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+    nav {
+        float: left;
+        width: 40%;
+        margin-top: 10px;
+    }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+    header h1 {
+        text-align:center;
+        float: right;
+        margin-right: 20px;
+
+    }
+    div h1{
+        color:white;
+        font-weight:bolder;
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .col-md-4 {
+        width: 30%;
+        float: left;
+        margin-right: 2%;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1em;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        input[type="submit"]:hover {
+            background: #555;
+        }
+
+    footer {
+        margin-top: 20px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+</style>
+<div>
+    <h1>Edit</h1>
+</div>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="center row">
+    <div class=" col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookId" />
@@ -53,13 +165,15 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+            <br />
+            <div>
+                <a asp-action="Index" class="btn btn-dark">Back to List</a>
+            </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
