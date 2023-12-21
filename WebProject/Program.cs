@@ -1,8 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using WebProject.Models;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
