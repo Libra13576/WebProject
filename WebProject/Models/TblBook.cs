@@ -28,6 +28,7 @@ namespace WebProject.Models
         [DisplayName("Publisher")]
         public int PublisherId { get; set; }
 
+
         public virtual TblCategory Cat { get; set; } = null!;
         public virtual TblStoreOwner Owner { get; set; } = null!;
         public virtual TblPublisher Publisher { get; set; } = null!;
