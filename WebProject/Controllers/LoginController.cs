@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebProject.Models;
-
+using Microsoft.AspNetCore.Http;
 namespace WebProject.Controllers
 {
     public class LoginController : Controller
@@ -24,11 +24,13 @@ namespace WebProject.Controllers
                                {
                                    userlist.CustomerId,
                                    userlist.CustomerEmail,
+                                   userlist.CustomerPassword,
                                }).ToList();
                 if (details.FirstOrDefault() != null)
                 {
                     HttpContext.Session.SetString("CustomerId", details.FirstOrDefault().CustomerId);
                     HttpContext.Session.SetString("CustomerEmail", details.FirstOrDefault().CustomerEmail);
+                    HttpContext.Session.SetString("CustomerPassword", details.FirstOrDefault().CustomerPassword);
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -46,15 +48,15 @@ namespace WebProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(TblCustomer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,CustomerEmail,CustomerPassword,CustomerFullname,CustomerAddress,CustomerPhone,Customerphoto")] TblCustomer tblCustomer)
         {
             if (ModelState.IsValid)
             {
-                _context.TblCustomers.Add(customer);
-                _context.SaveChanges();
-                return RedirectToAction("Login");
+                _context.Add(tblCustomer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Login));
             }
-            return View();
+            return View(tblCustomer);
         }
 
         public IActionResult AdminLogin()

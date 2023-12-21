@@ -11,19 +11,20 @@ namespace WebProject.Models
         }
 
         public string CustomerId { get; set; } = null!;
+
         [Display (Name="Email ")]
         [DataType(DataType.EmailAddress)]
         public string CustomerEmail { get; set; } = null!;
         [Display(Name = "Password ")]
         [DataType (DataType.Password)]
         public string CustomerPassword { get; set; } = null!;
-        [Display(Name = "Email ")]
-        public string CustomerFullname { get; set; } = null!;
         [Display(Name = "Name ")]
-        public string? CustomerAddress { get; set; }
+        public string CustomerFullname { get; set; } = null!;
         [Display(Name = "Address ")]
-        public string? CustomerPhone { get; set; }
+        public string? CustomerAddress { get; set; }
         [Display(Name = "Phone ")]
+        public string? CustomerPhone { get; set; }
+        
         public string? Customerphoto { get; set; }
 
         public virtual ICollection<TblCart> TblCarts { get; set; }
