@@ -16,6 +16,13 @@ namespace WebProject.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Register(TblCustomer customer)
+        {
+
+            return View();
+        }
+
         public IActionResult AdminLogin()
         {
             return View();
