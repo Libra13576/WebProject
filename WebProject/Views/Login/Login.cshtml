@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebProject.Models.TblCustomer
+
+@{
     ViewData["Title"] = "Login";
     Layout = null;
 }
@@ -28,21 +30,25 @@
                         <figure><img src="~/user/images/signin-image.jpg" alt="sing up image"></figure>
                         <a href="@Url.Action("Register","Login")" class="signup-image-link">Create an account</a>
                     </div>
-
+                    @Html.AntiForgeryToken()
                     <div class="signin-form">
+
                         <h2 class="form-title">Sign up</h2>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <form method="POST" class="register-form" id="login-form">
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                            <div>
+                                @Html.LabelFor(model => model.CustomerEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div>
+                                    @Html.EditorFor(model => model.CustomerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            <div>
+                                @Html.LabelFor(model => model.CustomerPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div>
+                                    @Html.EditorFor(model => model.CustomerPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustomerPassword, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
